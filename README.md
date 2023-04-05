@@ -2,7 +2,7 @@
 
 Bunny Clicker is a small mobile application development project still WIP made within the framework of an elective.
 
-<<DELETE BELOW>>
+VV!DELETE BELOW!!VV
 
 > 🚧 **This is a template project**: Make sure that you adapt this documentation and the source code in this project according to your needs and use case.
 
