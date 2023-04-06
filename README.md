@@ -1,6 +1,6 @@
 # Mobile Application Development with Android - Bunny Clicker
 
-Bunny Clicker is a small mobile application development project still WIP made within the framework of an elective.
+Bunny Clicker is a small mobile application development project still WIP made within the framework of an elective. TEST
 
 VV!DELETE BELOW!!VV
 
