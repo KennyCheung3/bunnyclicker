@@ -1,7 +1,9 @@
 package com.example.cookieclicker;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
@@ -11,8 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Random;
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,12 +25,19 @@ public class MainActivity extends AppCompatActivity {
 
     private CookieCounter cookieCounter = new CookieCounter();
 
+    private Typeface ttf;
+
+    private Random random;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         tvPoints = findViewById(R.id.tvPoints);
+        ttf = Typeface.createFromAsset(getAssets(), "EasterBunny.ttf");
+        tvPoints.setTypeface(ttf);
+        random = new Random();
     }
 
     public void onClick(View v) {
@@ -56,15 +65,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showToast(int stringID) {
-        Toast toast = new Toast(this);
-        toast.setGravity(Gravity.CENTER, 0, 0);
+        final Toast toast = new Toast(this);
+        toast.setGravity(Gravity.CENTER|Gravity.LEFT, random.nextInt(600)+100, random.nextInt(600)-300);
         toast.setDuration(Toast.LENGTH_SHORT);
         TextView textView = new TextView(this);
         textView.setText(stringID);
         textView.setTextSize(40f);
         textView.setTextColor(Color.BLACK);
+        textView.setTypeface(ttf);
         toast.setView(textView);
+        CountDownTimer toastCountDown;
+        toastCountDown = new CountDownTimer(500, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                toast.show();
+            }
+
+            @Override
+            public void onFinish() {
+                toast.cancel();
+            }
+        };
         toast.show();
+        toastCountDown.start();
     }
 
     public void update() {
@@ -76,7 +99,10 @@ public class MainActivity extends AppCompatActivity {
 
         private Timer timer;
 
-        private void CookieCounter() {
+
+        /* COMMENT: Automatically increases the number of cookies per second
+
+        private CookieCounter() {
             timer = new Timer();
             timer.scheduleAtFixedRate(new TimerTask() {
                 @Override
@@ -90,5 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }, 1000, 10);
         }
+
+        */
     }
 }
