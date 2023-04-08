@@ -6,8 +6,12 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,11 +27,17 @@ public class MainActivity extends AppCompatActivity {
 
     private int cps = 100;
 
-    private CookieCounter cookieCounter = new CookieCounter();
+
+    // COMMENTED OUT FOR NOW
+    // private CookieCounter cookieCounter = new CookieCounter();
 
     private Typeface ttf;
 
     private Random random;
+
+    private int[] Images = {R.drawable.cursor};
+    private String[] Names = {"Clicker"};
+    private String[] Description = {"+10 Bunnies per second"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
             v.startAnimation(a);
 
+        } else if (v.getId() == R.id.btnShop) {
+            showShopFragment();
         }
     }
 
@@ -95,12 +107,22 @@ public class MainActivity extends AppCompatActivity {
         tvPoints.setText(Integer.toString(points));
     }
 
+    private void showShopFragment() {
+        ViewGroup container = findViewById(R.id.container);
+        ShopAdapter shopAdapter = new ShopAdapter();
+        container.removeAllViews();
+        container.addView(getLayoutInflater().inflate(R.layout.shop_activity, null));
+        ((ListView)findViewById(R.id.listShop)).setAdapter(shopAdapter);
+
+    }
+
+    /* COMMENT: Automatically increases the number of cookies per second
+
+
     public class CookieCounter {
 
         private Timer timer;
 
-
-        /* COMMENT: Automatically increases the number of cookies per second
 
         private CookieCounter() {
             timer = new Timer();
@@ -117,6 +139,36 @@ public class MainActivity extends AppCompatActivity {
             }, 1000, 10);
         }
 
-        */
     }
+
+    */
+
+    public class ShopAdapter extends BaseAdapter {
+        @Override
+        public int getCount() {
+            return Images.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            convertView = getLayoutInflater().inflate(R.layout.item_listview, null);
+
+            ((ImageView)convertView.findViewById(R.id.imgItem)).setImageResource(Images[position]);
+            ((TextView)convertView.findViewById(R.id.tvName)).setText(Names[position]);
+            ((TextView)convertView.findViewById(R.id.tvDescription)).setText(Description[position]);
+
+            return convertView;
+        }
+    }
+
 }
