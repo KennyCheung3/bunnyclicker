@@ -1,10 +1,13 @@
 package com.example.cookieclicker;
 
+import android.app.AlertDialog;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -19,17 +22,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvPoints;
-    private int points = 0;
+    private int points;
 
-    private int cps = 100;
+    private int cps;
 
 
-    // COMMENTED OUT FOR NOW
-    // private CookieCounter cookieCounter = new CookieCounter();
+
+    private CookieCounter cookieCounter = new CookieCounter();
 
     private Typeface ttf;
 
@@ -37,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int[] Images = {R.drawable.cursor};
     private String[] Names = {"Clicker"};
-    private String[] Description = {"+10 Bunnies per second"};
+    private String[] Description = {"+100 Bunnies per second"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,27 @@ public class MainActivity extends AppCompatActivity {
         ttf = Typeface.createFromAsset(getAssets(), "EasterBunny.ttf");
         tvPoints.setTypeface(ttf);
         random = new Random();
+        open();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            showCookieFragment();
+            tvPoints = findViewById(R.id.tvPoints);
+            ttf = Typeface.createFromAsset(getAssets(), "EasterBunny.ttf");
+            tvPoints.setTypeface(ttf);
+            random = new Random();
+            open();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        save();
     }
 
     public void onClick(View v) {
@@ -66,7 +91,14 @@ public class MainActivity extends AppCompatActivity {
 
         } else if (v.getId() == R.id.btnShop) {
             showShopFragment();
+            save();
         }
+    }
+
+    private void showCookieFragment() {
+        ViewGroup container = findViewById(R.id.container);
+        container.removeAllViews();
+        container.addView(getLayoutInflater().inflate(R.layout.activity_main, null));
     }
 
     private void cookieClick() {
@@ -107,6 +139,20 @@ public class MainActivity extends AppCompatActivity {
         tvPoints.setText(Integer.toString(points));
     }
 
+    private void save() {
+        SharedPreferences preferences = getSharedPreferences("GAME", 0);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("cps", cps);
+        editor.putInt("cookies", points);
+        editor.commit();
+    }
+
+    private void open() {
+        SharedPreferences preferences = getSharedPreferences("GAME", 0);
+        cps = preferences.getInt("cps", 0);
+        points = preferences.getInt("cookies", 0);
+    }
+
     private void showShopFragment() {
         ViewGroup container = findViewById(R.id.container);
         ShopAdapter shopAdapter = new ShopAdapter();
@@ -116,7 +162,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /* COMMENT: Automatically increases the number of cookies per second
+    private void updateCps(int i) {
+        cps += i;
+    }
+
+    private void updatePoints(int i) {
+        points -= i;
+    }
 
 
     public class CookieCounter {
@@ -141,7 +193,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    */
 
     public class ShopAdapter extends BaseAdapter {
         @Override
@@ -166,6 +217,22 @@ public class MainActivity extends AppCompatActivity {
             ((ImageView)convertView.findViewById(R.id.imgItem)).setImageResource(Images[position]);
             ((TextView)convertView.findViewById(R.id.tvName)).setText(Names[position]);
             ((TextView)convertView.findViewById(R.id.tvDescription)).setText(Description[position]);
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (getCount() == 1) {
+                        if (points > 100) {
+                            updateCps(100);
+                            updatePoints(100);
+                            save();
+                        } else {
+                            new AlertDialog.Builder((MainActivity.this)).setMessage("You do not have enough points!")
+                                    .show();
+                        }
+                    }
+                }
+            });
 
             return convertView;
         }
