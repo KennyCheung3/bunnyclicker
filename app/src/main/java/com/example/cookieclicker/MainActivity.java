@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Random random;
 
+    private TextView tvCps;
+
     private int[] Images = {R.drawable.cursor};
     private String[] Names = {"Clicker"};
     private String[] Description = {"+100 Bunnies per second"};
@@ -51,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         tvPoints = findViewById(R.id.tvPoints);
         ttf = Typeface.createFromAsset(getAssets(), "EasterBunny.ttf");
         tvPoints.setTypeface(ttf);
+        tvCps = findViewById(R.id.tvCps);
+        tvCps.setTypeface(ttf);
         random = new Random();
         open();
     }
@@ -62,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
             tvPoints = findViewById(R.id.tvPoints);
             ttf = Typeface.createFromAsset(getAssets(), "EasterBunny.ttf");
             tvPoints.setTypeface(ttf);
+            tvCps = findViewById(R.id.tvCps);
+            tvCps.setTypeface(ttf);
             random = new Random();
             open();
             return true;
@@ -137,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
     public void update() {
         points += cps/100;
         tvPoints.setText(Integer.toString(points));
+        tvCps.setText(Integer.toString(cps) + " cps");
     }
 
     private void save() {

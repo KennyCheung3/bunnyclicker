@@ -14,8 +14,16 @@
         android:id="@+id/tvPoints"
         android:text="00000"
         android:layout_gravity="center"
-        android:textSize="32sp"
-        android:paddingTop="20dp" />
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/tvCps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 cps"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        />
 
     <ImageView
         android:id="@+id/imgCookie"
