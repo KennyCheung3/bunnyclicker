@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     private String[] Names2 = {"Item 2"};
     private String[] Description2 = {"+500 Bunnies per second"};
 
-    private int[] itemID2 = {R.drawable.cursor2};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -219,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public int getCount2() {
-            return Images2.length;
+            return Images2.length+1;
         }
 
         @Override
@@ -240,25 +239,27 @@ public class MainActivity extends AppCompatActivity {
             ((TextView)convertView.findViewById(R.id.tvName)).setText(Names[position]);
             ((TextView)convertView.findViewById(R.id.tvDescription)).setText(Description[position]);
 
+
             ((ImageView)convertView.findViewById(R.id.imgItem2)).setImageResource(Images2[position]);
             ((TextView)convertView.findViewById(R.id.tvName2)).setText(Names2[position]);
             ((TextView)convertView.findViewById(R.id.tvDescription2)).setText(Description2[position]);
 
+            int imgItem2 = 2;
 
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+
+
                     if (getCount() == 1) {
                         if (points > 100) {
                             updateCps(100);
                             updatePoints(100);
                             save();
-                        } else {
-                            new AlertDialog.Builder((MainActivity.this)).setMessage("You do not have enough points!")
-                                    .show();
                         }
                     }
-                    else if (getCount2() == 1) {
+                    if (imgItem2 == 2) {
                         if (points > 500) {
                             updateCps(500);
                             updatePoints(500);
