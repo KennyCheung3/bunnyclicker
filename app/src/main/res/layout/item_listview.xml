@@ -7,7 +7,7 @@
         android:id="@+id/imgItem"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:background="@mipmap/ic_launcher"/>
+        android:background="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/tvName"
@@ -26,6 +26,38 @@
         android:layout_y="44dp"
         android:text="00000"
         android:textSize="20sp" />
+
+
+
+
+    <ImageView
+        android:id="@+id/imgItem2"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@mipmap/ic_launcher"
+        android:layout_x="0dp"
+        android:layout_y="100dp"
+        />
+
+    <TextView
+        android:id="@+id/tvName2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_x="80dp"
+        android:layout_y="103dp"
+        android:text="00000"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/tvDescription2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_x="80dp"
+        android:layout_y="144dp"
+        android:text="00000"
+        android:textSize="20sp" />
+
+
 
 
 </AbsoluteLayout>

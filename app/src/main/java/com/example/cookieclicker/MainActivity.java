@@ -42,8 +42,14 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvCps;
 
     private int[] Images = {R.drawable.cursor};
-    private String[] Names = {"Clicker"};
+    private String[] Names = {"Item 1"};
     private String[] Description = {"+100 Bunnies per second"};
+
+    private int[] Images2 = {R.drawable.cursor2};
+    private String[] Names2 = {"Item 2"};
+    private String[] Description2 = {"+500 Bunnies per second"};
+
+    private int[] itemID2 = {R.drawable.cursor2};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showToast(int stringID) {
         final Toast toast = new Toast(this);
-        toast.setGravity(Gravity.CENTER|Gravity.LEFT, random.nextInt(600)+100, random.nextInt(600)-300);
+        toast.setGravity(Gravity.CENTER|Gravity.LEFT, random.nextInt(400)+100, random.nextInt(400)-300);
         toast.setDuration(Toast.LENGTH_SHORT);
         TextView textView = new TextView(this);
         textView.setText(stringID);
@@ -201,10 +207,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // NEEDS TO BE CHECKED AND FIXED VVVVV
+    // NEEDS TO BE CHECKED AND FIXED VVVVV
+    // NEEDS TO BE CHECKED AND FIXED VVVVV
+
+
     public class ShopAdapter extends BaseAdapter {
         @Override
         public int getCount() {
             return Images.length;
+        }
+
+        public int getCount2() {
+            return Images2.length;
         }
 
         @Override
@@ -225,6 +240,11 @@ public class MainActivity extends AppCompatActivity {
             ((TextView)convertView.findViewById(R.id.tvName)).setText(Names[position]);
             ((TextView)convertView.findViewById(R.id.tvDescription)).setText(Description[position]);
 
+            ((ImageView)convertView.findViewById(R.id.imgItem2)).setImageResource(Images2[position]);
+            ((TextView)convertView.findViewById(R.id.tvName2)).setText(Names2[position]);
+            ((TextView)convertView.findViewById(R.id.tvDescription2)).setText(Description2[position]);
+
+
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -236,6 +256,16 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             new AlertDialog.Builder((MainActivity.this)).setMessage("You do not have enough points!")
                                     .show();
+                        }
+                    }
+                    else if (getCount2() == 1) {
+                        if (points > 500) {
+                            updateCps(500);
+                            updatePoints(500);
+                            save();
+                        } else {
+                            new AlertDialog.Builder((MainActivity.this)).setMessage("You do not have enough points!")
+                                   .show();
                         }
                     }
                 }
