@@ -58,6 +58,34 @@
         android:textSize="20sp" />
 
 
+    <ImageView
+        android:id="@+id/imgItem3"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@mipmap/ic_launcher"
+        android:layout_x="0dp"
+        android:layout_y="200dp"
+        />
+
+    <TextView
+        android:id="@+id/tvName3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_x="80dp"
+        android:layout_y="203dp"
+        android:text="00000"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/tvDescription3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_x="80dp"
+        android:layout_y="244dp"
+        android:text="00000"
+        android:textSize="20sp" />
+
+
 
 
 </AbsoluteLayout>

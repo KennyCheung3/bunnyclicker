@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView tvCps;
 
+
     private int[] Images = {R.drawable.cursor};
     private String[] Names = {"Item 1"};
     private String[] Description = {"+100 Bunnies per second"};
@@ -48,6 +49,18 @@ public class MainActivity extends AppCompatActivity {
     private int[] Images2 = {R.drawable.cursor2};
     private String[] Names2 = {"Item 2"};
     private String[] Description2 = {"+500 Bunnies per second"};
+
+    private int[] Images3 = {R.drawable.cursor3};
+    private String[] Names3 = {"Item 3"};
+    private String[] Description3 = {"+1000 Bunnies per second"};
+
+
+    private int itemID1 = 1;
+
+    private int itemID2 = 2;
+
+    private int[][] imgArray = new int[][] { { 5,  }};
+
 
 
     @Override
@@ -244,13 +257,22 @@ public class MainActivity extends AppCompatActivity {
             ((TextView)convertView.findViewById(R.id.tvName2)).setText(Names2[position]);
             ((TextView)convertView.findViewById(R.id.tvDescription2)).setText(Description2[position]);
 
-            int imgItem2 = 2;
+            ((ImageView)convertView.findViewById(R.id.imgItem3)).setImageResource(Images3[position]);
+            ((TextView)convertView.findViewById(R.id.tvName3)).setText(Names3[position]);
+            ((TextView)convertView.findViewById(R.id.tvDescription3)).setText(Description3[position]);
+
+
 
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
 
+
+
+
+
+                /*
 
                     if (getCount() == 1) {
                         if (points > 100) {
@@ -269,6 +291,9 @@ public class MainActivity extends AppCompatActivity {
                                    .show();
                         }
                     }
+
+                    */
+
                 }
             });
 
