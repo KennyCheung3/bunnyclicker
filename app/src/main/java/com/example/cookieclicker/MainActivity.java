@@ -1,17 +1,22 @@
 package com.example.cookieclicker;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -25,6 +30,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
+
+    String fruitList[] = {"Apple", "Banana", "Apricot", "Orange", "Water Melon"};
+    int fruitImages[] = {R.drawable.apple, R.drawable.banana, R.drawable.apricot, R.drawable.orange, R.drawable.water_melon};
+
+    ListView listView;
 
     private TextView tvPoints;
     private int points;
@@ -74,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
         tvCps = findViewById(R.id.tvCps);
         tvCps.setTypeface(ttf);
         random = new Random();
+
+
         open();
     }
 
@@ -180,10 +192,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void showShopFragment() {
         ViewGroup container = findViewById(R.id.container);
-        ShopAdapter shopAdapter = new ShopAdapter();
+        CustomBaseAdapter shopAdapter = new CustomBaseAdapter(getApplicationContext(), fruitList, fruitImages);
         container.removeAllViews();
         container.addView(getLayoutInflater().inflate(R.layout.shop_activity, null));
+
         ((ListView)findViewById(R.id.listShop)).setAdapter(shopAdapter);
+
+
 
     }
 
@@ -218,12 +233,103 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public class CustomBaseAdapter extends BaseAdapter {
+
+        Context context;
+        String listFruit[];
+        int listImages[];
+        LayoutInflater inflater;
+
+
+        public CustomBaseAdapter (Context ctx, String[] fruitList, int[] images) {
+
+            this.context = ctx;
+            this.listFruit = fruitList;
+            this.listImages = images;
+            inflater = LayoutInflater.from(ctx);
+
+        }
+
+
+        @Override
+        public int getCount() {
+            return listFruit.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            convertView = inflater.inflate(R.layout.activity_custom_list_view, null);
+            listView = (ListView) findViewById(R.id.listShop);
+            TextView txtView = (TextView) convertView.findViewById(R.id.textView);
+            ImageView fruitImg = (ImageView) convertView.findViewById(R.id.imageIcom);
+            txtView.setText(listFruit[position]);
+            fruitImg.setImageResource(listImages[position]);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+                    switch (position) {
+                        case 0:
+                            updateCps(100);
+                            updatePoints(100);
+                            save();
+                            Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ @ position :: " + position);
+                            break;
+                        case 1:
+                            updateCps(200);
+                            updatePoints(200);
+                            save();
+                            Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ @ position :: " + position);
+                            break;
+                        case 2:
+                            updateCps(300);
+                            updatePoints(300);
+                            save();
+                            Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ @ position :: " + position);
+                            break;
+                        case 3:
+                            updateCps(400);
+                            updatePoints(400);
+                            save();
+                            Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ @ position :: " + position);
+                            break;
+                        case 4:
+                            updateCps(500);
+                            updatePoints(500);
+                            save();
+                            Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ @ position :: " + position);
+                            break;
+
+
+                    }
+
+                }
+            });
+
+
+
+            return convertView;
+        }
+
+
+
 
     // NEEDS TO BE CHECKED AND FIXED VVVVV
-    // NEEDS TO BE CHECKED AND FIXED VVVVV
-    // NEEDS TO BE CHECKED AND FIXED VVVVV
 
-
+/*
     public class ShopAdapter extends BaseAdapter {
         @Override
         public int getCount() {
@@ -246,7 +352,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = getLayoutInflater().inflate(R.layout.item_listview, null);
+            convertView = getLayoutInflater().inflate(R.layout.activity_custom_list_view, null);
 
             ((ImageView)convertView.findViewById(R.id.imgItem)).setImageResource(Images[position]);
             ((TextView)convertView.findViewById(R.id.tvName)).setText(Names[position]);
@@ -292,13 +398,17 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    */
+
 
                 }
             });
 
             return convertView;
         }
+
+
+ */
+
     }
 
 }
