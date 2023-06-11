@@ -2,6 +2,7 @@ package com.example.cookieclicker;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -31,7 +32,12 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    String fruitList[] = {"Apple", "Banana", "Apricot", "Orange", "Water Melon"};
+    String fruitList[] = {
+            "Item 1:    BPS: +100                   Cost: 100 points",
+            "Item 2:    BPS: +200                   Cost: 5000 points",
+            "Item 3:    BPS: +450                   Cost: 10'000 points",
+            "Item 4:    BPS: +1'000                   Cost: 20'000 points",
+            "Item 5:    BPS: +10'000                   Cost: 1'000'000 points"};
     int fruitImages[] = {R.drawable.apple, R.drawable.banana, R.drawable.apricot, R.drawable.orange, R.drawable.water_melon};
 
     ListView listView;
@@ -283,34 +289,187 @@ public class MainActivity extends AppCompatActivity {
 
                     switch (position) {
                         case 0:
-                            updateCps(100);
-                            updatePoints(100);
-                            save();
-                            Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ @ position :: " + position);
+                            if (points >= 100)
+                            {
+                                updateCps(100);
+                                updatePoints(100);
+                                save();
+                                Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ @ position :: " + position);
+
+                                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                                alertDialog.setTitle("Purchase successful!");
+                                alertDialog.setMessage("You have successfully bought the item! Current CPS: " + cps);
+                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                alertDialog.show();
+
+
+
+
+                            }
+                            else {
+                                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                                alertDialog.setTitle("Purchase failed!");
+                                alertDialog.setMessage("You have insufficient points!");
+                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                alertDialog.show();
+                            }
+
                             break;
                         case 1:
-                            updateCps(200);
-                            updatePoints(200);
-                            save();
-                            Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ @ position :: " + position);
+                            if (points >= 5000)
+                            {
+                                updateCps(200);
+                                updatePoints(5000);
+                                save();
+                                Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ @ position :: " + position);
+
+                                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                                alertDialog.setTitle("Purchase successful!");
+                                alertDialog.setMessage("You have successfully bought the item! Current CPS: " + cps);
+                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                alertDialog.show();
+
+                            }
+                            else {
+                                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                                alertDialog.setTitle("Purchase failed!");
+                                alertDialog.setMessage("You have insufficient points!");
+                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                alertDialog.show();
+                            }
+
                             break;
                         case 2:
-                            updateCps(300);
-                            updatePoints(300);
-                            save();
-                            Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ @ position :: " + position);
+                            if (points >= 10000)
+                            {
+                                updateCps(450);
+                                updatePoints(10000);
+                                save();
+                                Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ @ position :: " + position);
+
+                                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                                alertDialog.setTitle("Purchase successful!");
+                                alertDialog.setMessage("You have successfully bought the item! Current CPS: " + cps);
+                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                alertDialog.show();
+
+                            }
+                            else {
+                                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                                alertDialog.setTitle("Purchase failed!");
+                                alertDialog.setMessage("You have insufficient points!");
+                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                alertDialog.show();
+                            }
+
                             break;
                         case 3:
-                            updateCps(400);
-                            updatePoints(400);
-                            save();
-                            Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ @ position :: " + position);
+                            if (points >= 20000)
+                            {
+                                updateCps(1000);
+                                updatePoints(20000);
+                                save();
+                                Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ @ position :: " + position);
+
+                                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                                alertDialog.setTitle("Purchase successful!");
+                                alertDialog.setMessage("You have successfully bought the item! Current CPS: " + cps);
+                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                alertDialog.show();
+
+                            }
+                            else {
+                                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                                alertDialog.setTitle("Purchase failed!");
+                                alertDialog.setMessage("You have insufficient points!");
+                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                alertDialog.show();
+                            }
+
                             break;
                         case 4:
-                            updateCps(500);
-                            updatePoints(500);
-                            save();
-                            Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ @ position :: " + position);
+                            if (points >= 1000000)
+                            {
+                                updateCps(10000);
+                                updatePoints(1000000);
+                                save();
+                                Log.i("CUSTOM_LIST_VIEW", "Item is clicked @ @ position :: " + position);
+
+                                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                                alertDialog.setTitle("Purchase successful!");
+                                alertDialog.setMessage("You have successfully bought the item! Current CPS: " + cps);
+                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                alertDialog.show();
+
+                            }
+                            else {
+                                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                                alertDialog.setTitle("Purchase failed!");
+                                alertDialog.setMessage("You have insufficient points!");
+                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                        new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                alertDialog.show();
+                            }
+
                             break;
 
 
