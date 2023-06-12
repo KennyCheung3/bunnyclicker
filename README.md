@@ -2,8 +2,7 @@
 
 Bunny Clicker is a small mobile application development project within the framework of an elective.
 
-> 🚧 **FAQ**: In case of questions, please contact the owner of this project. \n
-> E-Mail Address: kenny.cheung@students.fhnw.ch
+> 🚧 **FAQ**: In case of questions, please contact the owner of this project (E-Mail: kenny.cheung@students.fhnw.ch)
 
 #### Contents:
 - [Project Definition](#project-definition)
