@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
     public void update() {
         points += cps/100;
         tvPoints.setText(Integer.toString(points));
-        tvCps.setText(Integer.toString(cps) + " cps");
+        tvCps.setText(Integer.toString(cps) + " bps");
     }
 
     private void save() {
