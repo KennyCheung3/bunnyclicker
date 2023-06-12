@@ -35,7 +35,7 @@ uploaded as a zip-file on Moodle).
 
 **Features**
 
-**Functionality:** The mobile app must be fully functional with a smooth user interface and user ex�perience. The bunny clicker game should be easy to play, with the ability to generate bunnies and
+**Functionality:** The mobile app must be fully functional with a smooth user interface and user experience. The bunny clicker game should be easy to play, with the ability to generate bunnies and
 purchase upgrade(s) without any bugs or errors.
 
 **Visual Design:** The visual design of the mobile app is crucial for attracting users and keeping them
