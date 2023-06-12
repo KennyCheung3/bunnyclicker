@@ -298,7 +298,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                                 alertDialog.setTitle("Purchase successful!");
-                                alertDialog.setMessage("You have successfully bought the item! Current CPS: " + cps);
+                                alertDialog.setMessage("You have successfully bought the item! Current BPS: " + cps);
                                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                                         new DialogInterface.OnClickListener() {
                                             @Override
@@ -337,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                                 alertDialog.setTitle("Purchase successful!");
-                                alertDialog.setMessage("You have successfully bought the item! Current CPS: " + cps);
+                                alertDialog.setMessage("You have successfully bought the item! Current BPS: " + cps);
                                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                                         new DialogInterface.OnClickListener() {
                                             @Override
@@ -373,7 +373,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                                 alertDialog.setTitle("Purchase successful!");
-                                alertDialog.setMessage("You have successfully bought the item! Current CPS: " + cps);
+                                alertDialog.setMessage("You have successfully bought the item! Current BPS: " + cps);
                                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                                         new DialogInterface.OnClickListener() {
                                             @Override
@@ -409,7 +409,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                                 alertDialog.setTitle("Purchase successful!");
-                                alertDialog.setMessage("You have successfully bought the item! Current CPS: " + cps);
+                                alertDialog.setMessage("You have successfully bought the item! Current BPS: " + cps);
                                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                                         new DialogInterface.OnClickListener() {
                                             @Override
@@ -445,7 +445,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                                 alertDialog.setTitle("Purchase successful!");
-                                alertDialog.setMessage("You have successfully bought the item! Current CPS: " + cps);
+                                alertDialog.setMessage("You have successfully bought the item! Current BPS: " + cps);
                                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                                         new DialogInterface.OnClickListener() {
                                             @Override
