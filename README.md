@@ -7,6 +7,7 @@ Bunny Clicker is a small mobile application development project within the frame
 #### Contents:
 - [Project Definition](#project-definition)
 - [Project Management](#project-management)
+- [User Stories](#user-stories)
 - [Roles](#roles)
 
 
@@ -49,6 +50,32 @@ for this mobile application due to the size and low complexity of data storage i
 The project definition for this application as PDF-File can be found [here](https://fhnw365-my.sharepoint.com/:b:/r/personal/kenny_cheung_students_fhnw_ch/Documents/z_Electives/6_Mobile%20App%20Development/Project%20Definition_Bunny%20Clicker.pdf?csf=1&web=1&e=3vuYmx).
 
 ## Project Management
+
+**Work distribution**
+
+- **Kenny Cheung - 100%**
+
+**Encountered problems**
+
+*Fixed*
+1. Fixed issue adding new items to the store
+2. Fixed issue with the UI elements
+
+*Unresolved*
+1. Issue decreasing the minimum BPS to below 100 BPS/second
+
+## User Stories
+
+1. As a user, I want to have a mobile application with a consistent, appealing and intuitive visual appearance.
+2. As a user, I want to be able to see my current points.
+3. As a user, I want to be able to see my current bunnies per second (BPS).
+4. As a user, I want to be able to click on the object in the middle of the main screen to gain points.
+5. As a user, I want to be able to visit the in-game store to view all items.
+6. As a user, I want to be notified when attempting to make a purchase from the store.
+7. As a user, I want to be able to purchase items from the store.
+8. As a user, I want to have my progress automatically saved, so I can continue at a later point in time.
+
+
 
 ### Roles
 - Developer: [Kenny Cheung](https://people.inside.fhnw.ch/Person.aspx?accountname=i%3A05%2Et%7Cadfs%7Ckenny%2Echeung%40students%2Efhnw%2Ech)
